@@ -1,0 +1,38 @@
+<header class="header">
+  <h1 data-cy="main-title">Hello {{ userInfo.name }} {{ userInfo.surname }}</h1>
+  <p id="userPoints">You have {{ userInfo.points }}</p>
+</header>
+<div class="main-claim-container">
+  <section *ngIf="!showMessage" class="request-form">
+    <button (click)="showMessageSection()" class="send-btn" data-cy="write-claim">Write a claim</button>
+  </section>
+  <section *ngIf="showMessage" class="message-section" data-cy="message-section">
+    <section class="request-form">
+      <h3>Send a request</h3>
+      <form>
+        <div class="form-field">
+          <label>Title</label>
+          <input id="messageTitle" type="text" class="input-field">
+        </div>
+        <div class="form-field">
+          <label>Message</label>
+          <textarea id="messageText" class="input-field"></textarea>
+        </div>
+        <button (click)="sendMessage($event)" class="send-btn" data-cy="send-message-btn">Send Massage</button>
+      </form>
+    </section>
+    <section class="request-form">
+      <div *ngIf="message.title" class="message-container" data-cy="message-container">
+        <h3>Title: {{ message.title }}</h3>
+        <h4>Text: {{ message.text }}</h4>
+      </div>
+    </section>
+
+    <button (click)="clearMessage()" data-cy="clear-btn">Clear Message</button>
+  </section>
+</div>
+<a href="https://yougov.zendesk.com/hc/en-us/articles/115002813994-I-want-to-unsubscribe-from-YouGov">Unsubscribe</a>
+<div class="info-message" data-cy="info-message">You can't send a claim on small screens</div>
+<h5>YouGov</h5>
+<h5>WorkShop</h5>
+<h5>Example</h5>
